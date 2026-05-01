@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Project</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #34495e;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Cloud Based Java Project</h1>
+
+<div class="box">
+    <h2>Factorial (4 to 8)</h2>
+    <div id="fact"></div>
+</div>
+
+<div class="box">
+    <h2>Minimum and Maximum</h2>
+    <div id="minmax"></div>
+</div>
+
+<script>
+function fact(n) {
+    let res = 1;
+    for (let i = 1; i <= n; i++) {
+        res = res * i;
+    }
+    return res;
+}
+
+let output = "";
+for (let i = 4; i <= 8; i++) {
+    output += "<p>" + i + " = " + fact(i) + "</p>";
+}
+document.getElementById("fact").innerHTML = output;
+
+let arr = [20, 21, 30, 31, 44];
+let min = Math.min(...arr);
+let max = Math.max(...arr);
+
+document.getElementById("minmax").innerHTML =
+    "<p>Min = " + min + "</p><p>Max = " + max + "</p>";
+</script>
+
+</body>
+</html>
