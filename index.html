@@ -5,7 +5,7 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background-color: #f4f6f8;
             text-align: center;
             padding: 40px;
@@ -19,58 +19,92 @@
             background: white;
             padding: 20px;
             margin: 20px auto;
-            width: 300px;
+            width: 320px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
         }
 
-        h2 {
-            color: #34495e;
+        input, button {
+            padding: 8px;
+            margin: 10px;
+            width: 80%;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
         }
 
         p {
             font-size: 16px;
-            margin: 5px;
         }
     </style>
-
 </head>
 
 <body>
 
 <h1>Cloud Based Java Project</h1>
 
+<!-- Factorial -->
 <div class="box">
-    <h2>Factorial (4 to 8)</h2>
-    <div id="fact"></div>
+    <h2>Factorial Calculator</h2>
+
+    <input type="number" id="num" placeholder="Enter number">
+    <br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <p id="result"></p>
 </div>
 
+<!-- Min Max -->
 <div class="box">
-    <h2>Minimum and Maximum</h2>
-    <div id="minmax"></div>
+    <h2>Min & Max Calculator</h2>
+
+    <input type="text" id="numbers" placeholder="Enter numbers (e.g. 20,21,30)">
+    <br>
+
+    <button onclick="findMinMax()">Find</button>
+
+    <p id="minmaxResult"></p>
 </div>
 
 <script>
-function fact(n) {
+// Factorial
+function calculate() {
+    let n = document.getElementById("num").value;
     let res = 1;
+      if (n < 4 || n > 8) {
+        document.getElementById("result").innerHTML =
+            "Please enter a number between 4 and 8";
+        return;
+    }
+
     for (let i = 1; i <= n; i++) {
         res = res * i;
     }
-    return res;
+
+    document.getElementById("result").innerHTML = n + "! = " + res;
 }
 
-let output = "";
-for (let i = 4; i <= 8; i++) {
-    output += "<p>" + i + " = " + fact(i) + "</p>";
+// Min Max
+function findMinMax() {
+    let input = document.getElementById("numbers").value;
+
+    let arr = input.split(",").map(Number);
+
+    let min = Math.min(...arr);
+    let max = Math.max(...arr);
+
+    document.getElementById("minmaxResult").innerHTML =
+        "Min = " + min + "<br>Max = " + max;
 }
-document.getElementById("fact").innerHTML = output;
-
-let arr = [20, 21, 30, 31, 44];
-let min = Math.min(...arr);
-let max = Math.max(...arr);
-
-document.getElementById("minmax").innerHTML =
-    "<p>Min = " + min + "</p><p>Max = " + max + "</p>";
 </script>
 
 </body>
